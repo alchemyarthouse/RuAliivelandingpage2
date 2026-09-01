@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundations Aliive — with Ru</title>
+<style>
+@font-face{
+  font-family:'Gambarino';
+  src:url('assets/fonts/Gambarino-Regular.otf') format('opentype');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Clash Display';
+  src:url('assets/fonts/ClashDisplay-Medium.otf') format('opentype');
+  font-weight:500; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'General Sans';
+  src:url('assets/fonts/GeneralSans-Regular.otf') format('opentype');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'General Sans';
+  src:url('assets/fonts/GeneralSans-Semibold.otf') format('opentype');
+  font-weight:600; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Comico';
+  src:url('assets/fonts/Comico-Regular.otf') format('opentype');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Quilon';
+  src:url('assets/fonts/Quilon-Bold.otf') format('opentype');
+  font-weight:700; font-style:normal; font-display:swap;
+}
+
+:root{
+  --bg:         #f0ead5;
+  --paper:      #fff9ef;
+  --red:        #b8000e;
+  --slate:      #2f788f;
+  --sky:        #00c3ff;
+  --sky-text:   #005f7c;
+  --ghost:      #d8cebd;
+  --off-white:  #f5f5f5;
+  --ink:        #000000;
+  --near-black: #211d19;
+
+  --serif: 'Gambarino', 'Georgia', serif;
+  --body:  'General Sans', 'Segoe UI', sans-serif;
+  --tag:   'Clash Display', sans-serif;
+  --hand:  'Comico', cursive;
+  --stack: 'Quilon', sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--body);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+.wrap{max-width:402px; margin:0 auto; padding:0 31px;}
+
+h1,h2{
+  font-family:var(--serif);
+  font-weight:400;
+  color:var(--red);
+  font-size:45px;
+  line-height:1.1;
+  letter-spacing:-1.35px;
+}
+h3{font-family:var(--serif); font-weight:400; color:var(--red); font-size:24px;}
+p{font-family:var(--body); font-size:16px; line-height:1.4; color:var(--ink);}
+.eyebrow{
+  font-family:var(--tag);
+  font-weight:500;
+  font-size:13px;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+
+.section{padding:44px 0;}
+.section-tight{padding:36px 0;}
+
+/* ===== Logo ===== */
+.logo-mark{display:block; margin:0 auto; width:174px; height:123px;}
+.logo-mark.small{width:88px; height:62px;}
+
+/* ===== Hero ===== */
+.hero{padding-top:24px;}
+.hero-photo{
+  position:relative;
+  margin-top:25px;
+  border-radius:17px;
+  border:2px solid var(--red);
+  overflow:hidden;
+}
+.hero-photo img{width:100%; display:block;}
+
+.underline-stroke{display:block; width:135px; height:4.5px; background:var(--ink); border-radius:2px; margin-top:8px;}
+.hero-sub{font-size:16px; color:var(--ink); margin-top:16px;}
+
+.pill-row{display:flex; flex-wrap:nowrap; gap:6px; margin-top:20px;}
+.pill{
+  background:var(--slate);
+  color:#fff;
+  font-family:var(--tag);
+  font-weight:500;
+  font-size:14px;
+  height:29px;
+  display:flex; align-items:center;
+  padding:0 13px;
+  border-radius:14.5px;
+  white-space:nowrap;
+  flex:0 1 auto;
+}
+
+.btn-apply{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:20px;
+  background:var(--red);
+  color:var(--paper);
+  font-family:var(--hand);
+  font-weight:400;
+  font-size:64px;
+  letter-spacing:-2px;
+  height:80px;
+  border-radius:16px;
+  text-decoration:none;
+  box-shadow:0 4px 4px rgba(0,0,0,0.25);
+}
+.btn-fine{text-align:center; font-family:var(--body); font-weight:500; font-size:11px; color:var(--ink); margin-top:10px;}
+
+.hand-quote{
+  font-family:var(--hand);
+  font-weight:400;
+  font-size:22px;
+  color:var(--ink);
+  text-align:center;
+  margin-top:26px;
+  transform:rotate(-5deg) translateX(-10px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+.hand-quote .mark{display:inline-block; height:24px; width:auto;}
+
+/* ===== Easeful aliveness (sky block) ===== */
+.block-sky{
+  background:var(--sky);
+  padding:32px 31px 30px;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  text-align:left;
+}
+.block-sky h2{color:var(--off-white); font-size:38px;}
+.block-sky .body-tag{
+  font-family:var(--tag);
+  font-weight:500;
+  font-size:30px;
+  line-height:1.15;
+  letter-spacing:-0.9px;
+  color:var(--sky-text);
+  margin-top:16px;
+}
+.block-sky .body-support{
+  font-family:var(--body);
+  font-weight:500;
+  font-size:14px;
+  line-height:1.4;
+  color:var(--off-white);
+  margin-top:18px;
+}
+.block-sky .logo-mark{margin-top:24px; width:56px; height:39px; filter:grayscale(1) brightness(0.5); mix-blend-mode:luminosity;}
+
+/* ===== Four foundations ===== */
+.foundations-rail{
+  display:flex;
+  gap:14px;
+  margin-top:22px;
+  padding:4px 31px 6px;
+  margin-left:-31px;
+  margin-right:-31px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.foundations-rail::-webkit-scrollbar{display:none;}
+.foundation-card{
+  flex:0 0 auto;
+  scroll-snap-align:start;
+  width:250px;
+  background:var(--paper);
+  border:2px solid rgba(0,0,0,0.1);
+  border-radius:20px;
+  padding:24px 22px;
+}
+.fc-icon{
+  width:42px; height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:12px;
+  color:#fff;
+}
+.fc-icon svg{width:21px; height:21px;}
+.foundation-card .word{
+  font-family:var(--stack);
+  font-weight:700;
+  color:var(--ghost);
+  font-size:32px;
+  letter-spacing:-1.6px;
+  line-height:1;
+}
+.foundation-card h3{font-size:22px; margin-top:12px;}
+.foundation-card .tag{display:block; font-family:var(--body); font-weight:600; font-size:13px; margin-top:4px; margin-bottom:10px;}
+.foundation-card p{font-size:15px; line-height:1.5;}
+
+.fc-red{border-color:var(--red);}
+.fc-red .fc-icon{background:var(--red);}
+.fc-red .tag{color:var(--red);}
+.fc-yellow{border-color:#e0a721;}
+.fc-yellow .fc-icon{background:#e0a721;}
+.fc-yellow .tag{color:#a97b12;}
+.fc-blue{border-color:var(--sky);}
+.fc-blue .fc-icon{background:var(--sky);}
+.fc-blue .tag{color:var(--sky-text);}
+.fc-green{border-color:#4a8c6f;}
+.fc-green .fc-icon{background:#4a8c6f;}
+.fc-green .tag{color:#356450;}
+
+.rail-hint{
+  font-family:var(--body);
+  font-weight:600;
+  font-size:13px;
+  color:var(--ink);
+  margin-top:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.rail-hint svg{width:16px; height:16px; color:var(--red); flex-shrink:0;}
+
+/* ===== How it works ===== */
+.schedule-strip{display:flex; gap:12px; margin-top:22px;}
+.schedule-day{flex:1; background:var(--red); border-radius:14px; padding:14px 12px; text-align:center;}
+.schedule-day .d{font-family:var(--tag); font-weight:500; font-size:13px; color:var(--off-white);}
+.schedule-day .t{font-family:var(--hand); color:var(--paper); font-size:26px; margin-top:4px;}
+
+.stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;}
+.stat-card{background:var(--red); border-radius:14px; padding:16px 14px; text-align:center;}
+.stat-card strong{display:block; font-family:var(--hand); color:var(--paper); font-size:32px; font-weight:400;}
+.stat-card span{font-family:var(--body); font-weight:600; font-size:12px; color:var(--off-white); line-height:1.3; display:block; margin-top:2px;}
+
+/* ===== Testimonial carousel — square images, auto-loop ===== */
+.tm-carousel{
+  margin-top:22px;
+  overflow:hidden;
+  border-radius:20px;
+  border:2px solid var(--red);
+  position:relative;
+  aspect-ratio:1;
+}
+.tm-track{
+  display:flex;
+  height:100%;
+  transition:transform .6s cubic-bezier(.65,0,.35,1);
+}
+.tm-slide{flex:0 0 100%; height:100%;}
+.tm-slide img{width:100%; height:100%; object-fit:cover; display:block;}
+.tm-dots{display:flex; justify-content:center; gap:6px; margin-top:14px; flex-wrap:wrap;}
+.tm-dots .dot{width:6px; height:6px; border-radius:50%; background:rgba(0,0,0,0.15); transition:background .3s ease, transform .3s ease;}
+.tm-dots .dot.active{background:var(--red); transform:scale(1.3);}
+
+/* ===== What's included ===== */
+.include-card{
+  background:var(--red);
+  border:2px solid var(--near-black);
+  border-radius:20px;
+  padding:26px 22px;
+  margin-top:16px;
+}
+.include-card .eyebrow{color:var(--off-white);}
+.include-card h2{color:var(--off-white); font-size:32px;}
+.include-card .lede{font-family:var(--hand); color:var(--paper); font-size:22px; margin-top:10px;}
+.include-list{list-style:none; margin-top:18px; display:flex; flex-direction:column; gap:10px;}
+.include-list li{
+  font-family:var(--body);
+  font-size:15px;
+  color:var(--off-white);
+  line-height:1.4;
+  padding-left:20px;
+  position:relative;
+}
+.include-list li::before{
+  content:'✓';
+  position:absolute; left:0; top:0;
+  color:var(--paper);
+  font-weight:700;
+}
+
+/* ===== When it runs ===== */
+.tz-list{margin-top:18px; background:var(--paper); border:1px solid rgba(0,0,0,0.1); border-radius:16px; overflow:hidden;}
+.tz-row{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:13px 18px; border-top:1px solid rgba(0,0,0,0.08);}
+.tz-row:first-child{border-top:none;}
+.tz-place{font-family:var(--body); font-weight:600; font-size:14px;}
+.tz-time{font-family:var(--tag); font-weight:500; font-size:14px; color:var(--red); white-space:nowrap;}
+
+/* ===== The investment ===== */
+.invest-card{
+  background:var(--paper);
+  border:1.5px solid rgba(0,0,0,0.1);
+  border-radius:20px;
+  padding:24px 22px;
+  margin-top:16px;
+}
+.invest-card-save{border-color:var(--red);}
+.invest-badge{display:inline-block; background:var(--slate); color:#fff; font-family:var(--tag); font-weight:500; font-size:12.5px; padding:5px 13px; border-radius:999px;}
+.invest-card-save .invest-badge{background:var(--red);}
+.invest-total{font-family:var(--serif); color:var(--red); font-size:36px; margin-top:12px;}
+.invest-total span{font-family:var(--body); font-size:14px; color:var(--ink); font-weight:400;}
+.invest-breakdown{list-style:none; margin-top:14px; display:flex; flex-direction:column; gap:7px;}
+.invest-breakdown li{font-family:var(--body); font-size:14px; line-height:1.35; padding-left:14px; position:relative;}
+.invest-breakdown li::before{content:''; position:absolute; left:0; top:7px; width:4px; height:4px; border-radius:50%; background:var(--slate);}
+.invest-breakdown li.save-line{color:var(--red); font-weight:600;}
+.invest-breakdown li.save-line::before{background:var(--red);}
+
+.invest-cta{margin-top:24px; text-align:center;}
+.invest-cta .hand-quote{color:var(--ink); font-size:24px; margin-top:0; margin-bottom:20px;}
+
+/* ===== Footer ===== */
+footer{background:var(--near-black); padding:40px 31px 50px; text-align:center;}
+footer .tagline{font-family:var(--body); font-size:14px; color:var(--off-white); margin-bottom:16px;}
+footer .footer-links{display:flex; justify-content:center; flex-wrap:wrap;}
+footer .footer-links a{font-family:var(--body); font-size:13px; color:var(--ghost); text-decoration:underline; text-underline-offset:3px; margin:0 9px;}
+footer .logo-mark{filter:brightness(0) saturate(100%) invert(84%) sepia(11%) saturate(556%) hue-rotate(357deg) brightness(96%) contrast(92%); margin:0 auto 14px;}
+
+@media (prefers-reduced-motion: reduce){
+  .tm-track{transition:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <img class="logo-mark" src="assets/img/logo.png" alt="Ru">
+
+    <div class="hero-photo">
+      <img src="assets/img/heroshot.jpg" alt="Ru standing at the base of a giant redwood">
+    </div>
+
+    <h1>Feel more relaxed, aware and alive in your body.</h1>
+    <span class="underline-stroke"></span>
+
+    <p class="hero-sub">A four-month exploration with Ru, coming back to a handful of foundations</p>
+
+    <div class="pill-row">
+      <span class="pill">Sept 21 – Jan 6</span>
+      <span class="pill">16 weeks</span>
+      <span class="pill">16 People</span>
+    </div>
+
+    <a href="#apply" class="btn-apply">Apply</a>
+    <p class="btn-fine">Fill out our short questionnaire to see if you're a good fit, It only takes a minute!</p>
+
+    <p class="hand-quote">"Come back to yourself"<img class="mark" src="assets/img/logo.png" alt=""></p>
+  </div>
+</section>
+
+<!-- ================= EASEFUL ALIVENESS (sky block) ================= -->
+<section class="section-tight">
+  <div class="block-sky">
+    <h2>Easeful aliveness</h2>
+    <p class="body-tag">Relaxed, but alive.<br>Calm, but not flat.<br>Composed<br>without becoming<br>rigid, strong<br>without constantly<br>bracing, present<br>without forcing it.</p>
+    <p class="body-support">Less internal noise, more energy for the things you actually care about like your work, your art, your relationships, your life.</p>
+    <img class="logo-mark" src="assets/img/logo.png" alt="">
+  </div>
+</section>
+
+<!-- ================= FOUR FOUNDATIONS ================= -->
+<section class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">The four foundations</div>
+    <h2 style="font-size:36px;">Four doorways in, over 16 weeks</h2>
+    <p style="margin-top:12px;">Swipe through — they're not really separate, just different ways back to the same place.</p>
+  </div>
+
+  <div class="foundations-rail">
+    <div class="foundation-card fc-red">
+      <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M6 21c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg></div>
+      <div class="word">Stand</div>
+      <h3>Structure</h3>
+      <span class="tag">Come back into your body</span>
+      <p>How you stand, how you carry tension. The core practice is STEDI — a seven-minute standing meditation, no equipment.</p>
+    </div>
+    <div class="foundation-card fc-yellow">
+      <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 12h4l2-8 4 16 2-8h4"/></svg></div>
+      <div class="word">Breathe</div>
+      <h3>Energy</h3>
+      <span class="tag">Stop leaking so much of it</span>
+      <p>Rest, sleep, breathing, stillness. Not through force — through learning your way back to centre.</p>
+    </div>
+    <div class="foundation-card fc-blue">
+      <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="word">Move</div>
+      <h3>Movement</h3>
+      <span class="tag">A body that feels good to move</span>
+      <p>Spring, rotation, play. Building sensitivity first, so movement feels intelligent — and enjoyable.</p>
+    </div>
+    <div class="foundation-card fc-green">
+      <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-7 10-7 10a2 2 0 0 1-4 0z"/></svg></div>
+      <div class="word">Rest</div>
+      <h3>Nourishment</h3>
+      <span class="tag">Lighten the load</span>
+      <p>Not a bootcamp or a rigid diet — a personalised direction that lightens the load on your system.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="rail-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+      <span>Swipe to see all four</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2 style="font-size:36px;">Two live sessions a week</h2>
+    <p style="margin-top:12px;">Mondays and Wednesdays, two hours each — understand it, then practise it. Plus four private 1:1s with Ru, and everything's recorded if you miss a session.</p>
+
+    <div class="schedule-strip">
+      <div class="schedule-day"><div class="d">MON</div><div class="t">6–8AM</div></div>
+      <div class="schedule-day"><div class="d">WED</div><div class="t">6–8AM</div></div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card"><strong>16</strong><span>Weeks, start to finish</span></div>
+      <div class="stat-card"><strong>4</strong><span>Private 1:1s with Ru</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">In their words</div>
+    <h2 style="font-size:36px;">What changes, after</h2>
+
+    <div class="tm-carousel" id="tmCarousel">
+      <div class="tm-track" id="tmTrack">
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_00.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_01.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_02.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_03.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_04.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_05.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_06.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_07.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_08.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_09.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_10.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+        <div class="tm-slide"><img src="assets/img/testimonials/sq_11.jpg" alt="Testimonial from a Foundations Aliive participant"></div>
+      </div>
+    </div>
+    <div class="tm-dots" id="tmDots"></div>
+  </div>
+</section>
+
+<!-- ================= WHAT'S INCLUDED ================= -->
+<section class="section-tight">
+  <div class="wrap">
+    <div class="include-card">
+      <div class="eyebrow">What's included</div>
+      <h2>Everything, in one place</h2>
+      <p class="lede">"Just things that are useful."</p>
+      <ul class="include-list">
+        <li>32 live sessions across 16 weeks</li>
+        <li>4 private 1:1 sessions with Ru</li>
+        <li>Every session recorded</li>
+        <li>Private community of 16</li>
+        <li>The full Foundations library — STEDI, movement, meditation, Nidra, nourishment guidance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHEN IT RUNS ================= -->
+<section class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">When it runs</div>
+    <h2 style="font-size:36px;">6–8am, Queensland time</h2>
+    <p style="margin-top:12px;">At the beginning of the program, that's approximately:</p>
+
+    <div class="tz-list">
+      <div class="tz-row"><span class="tz-place">Queensland</span><span class="tz-time">6–8am Mon/Wed</span></div>
+      <div class="tz-row"><span class="tz-place">Sydney + Melbourne</span><span class="tz-time">6–8am Mon/Wed</span></div>
+      <div class="tz-row"><span class="tz-place">New Zealand</span><span class="tz-time">8–10am Mon/Wed</span></div>
+      <div class="tz-row"><span class="tz-place">Los Angeles</span><span class="tz-time">1–3pm Sun/Tue</span></div>
+      <div class="tz-row"><span class="tz-place">New York</span><span class="tz-time">4–6pm Sun/Tue</span></div>
+      <div class="tz-row"><span class="tz-place">UK</span><span class="tz-time">9–11pm Sun/Tue</span></div>
+    </div>
+    <p style="font-size:14px; margin-top:18px;">Every live session is recorded — your calendar invite will always show the correct local time wherever you are.</p>
+  </div>
+</section>
+
+<!-- ================= THE INVESTMENT ================= -->
+<section class="section" id="apply">
+  <div class="wrap">
+    <div class="eyebrow">The investment</div>
+    <h2 style="font-size:36px;">Two ways to join</h2>
+
+    <div class="invest-card">
+      <div class="invest-badge">Payment plan</div>
+      <div class="invest-total">$6,000 <span>total</span></div>
+      <ul class="invest-breakdown">
+        <li>$1,500 commitment deposit with your application</li>
+        <li>If accepted, that becomes your first payment</li>
+        <li>Then 3 × monthly payments of $1,500</li>
+      </ul>
+    </div>
+
+    <div class="invest-card invest-card-save">
+      <div class="invest-badge">Pay upfront</div>
+      <div class="invest-total">$5,700 <span>total</span></div>
+      <ul class="invest-breakdown">
+        <li>$1,500 commitment deposit with your application</li>
+        <li>If accepted, $4,200 remaining payment</li>
+        <li class="save-line">A $300 saving for paying the remaining balance upfront</li>
+      </ul>
+    </div>
+
+    <div class="invest-cta">
+      <p class="hand-quote" style="transform:none;">"Come back to yourself"</p>
+      <a href="#" class="btn-apply">Apply</a>
+      <p class="btn-fine">$1,500 refundable deposit. Ru personally reads every application.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="logo-mark small" src="assets/img/logo.png" alt="Ru">
+  <p class="tagline">Foundations Aliive — a programme by Ru.</p>
+  <div class="footer-links">
+    <a href="#">Instagram</a>
+    <a href="mailto:hello@aliive.co">hello@aliive.co</a>
+    <a href="#apply">Apply</a>
+  </div>
+</footer>
+
+<script>
+  // Testimonial carousel — auto-loops, one square image at a time
+  (function(){
+    const track = document.getElementById('tmTrack');
+    const slides = document.querySelectorAll('#tmTrack .tm-slide');
+    const dotsWrap = document.getElementById('tmDots');
+    if(!track || !slides.length) return;
+    let idx = 0;
+
+    slides.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      dotsWrap.appendChild(d);
+    });
+    const dots = dotsWrap.querySelectorAll('.dot');
+
+    function goTo(i){
+      idx = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach((d, di) => d.classList.toggle('active', di === idx));
+    }
+    function next(){ goTo(idx + 1); }
+    let timer = setInterval(next, 3000);
+
+    const wrap = document.getElementById('tmCarousel');
+    let startX = 0;
+    wrap.addEventListener('touchstart', e => { clearInterval(timer); startX = e.touches[0].clientX; }, {passive:true});
+    wrap.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if(dx < -30) goTo(idx + 1);
+      else if(dx > 30) goTo(idx - 1);
+      timer = setInterval(next, 3000);
+    }, {passive:true});
+  })();
+</script>
+
+</body>
+</html>
